@@ -11,6 +11,9 @@
 		1840CBB22C103F5F007645E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840CBB12C103F5F007645E4 /* ContentView.swift */; };
 		1840CBB42C103F61007645E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1840CBB32C103F61007645E4 /* Assets.xcassets */; };
 		1840CBB72C103F61007645E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1840CBB62C103F61007645E4 /* Preview Assets.xcassets */; };
+		1840CBC12C105134007645E4 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1840CBBE2C104093007645E4 /* AuthenticationServices.framework */; };
+		1840CBC62C107CE5007645E4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840CBC52C107CE5007645E4 /* LoginView.swift */; };
+		1840CBC82C10EDED007645E4 /* HealthStoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840CBC72C10EDED007645E4 /* HealthStoreDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,11 @@
 		1840CBB12C103F5F007645E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1840CBB32C103F61007645E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1840CBB62C103F61007645E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1840CBBE2C104093007645E4 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		1840CBC02C104EAB007645E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1840CBC42C10557E007645E4 /* AppleSignDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleSignDebug.entitlements; sourceTree = "<group>"; };
+		1840CBC52C107CE5007645E4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1840CBC72C10EDED007645E4 /* HealthStoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1840CBC12C105134007645E4 /* AuthenticationServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +46,7 @@
 			children = (
 				1840CBAE2C103F5F007645E4 /* AppleSign */,
 				1840CBAD2C103F5F007645E4 /* Products */,
+				1840CBBD2C104093007645E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +61,12 @@
 		1840CBAE2C103F5F007645E4 /* AppleSign */ = {
 			isa = PBXGroup;
 			children = (
+				1840CBC42C10557E007645E4 /* AppleSignDebug.entitlements */,
+				1840CBC02C104EAB007645E4 /* Info.plist */,
 				1840CBAF2C103F5F007645E4 /* AppleSignApp.swift */,
 				1840CBB12C103F5F007645E4 /* ContentView.swift */,
+				1840CBC52C107CE5007645E4 /* LoginView.swift */,
+				1840CBC72C10EDED007645E4 /* HealthStoreDataView.swift */,
 				1840CBB32C103F61007645E4 /* Assets.xcassets */,
 				1840CBB52C103F61007645E4 /* Preview Content */,
 			);
@@ -65,6 +79,14 @@
 				1840CBB62C103F61007645E4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1840CBBD2C104093007645E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1840CBBE2C104093007645E4 /* AuthenticationServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1840CBC82C10EDED007645E4 /* HealthStoreDataView.swift in Sources */,
+				1840CBC62C107CE5007645E4 /* LoginView.swift in Sources */,
 				1840CBB22C103F5F007645E4 /* ContentView.swift in Sources */,
 				1840CBB02C103F5F007645E4 /* AppleSignApp.swift in Sources */,
 			);
@@ -269,27 +293,37 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppleSign/AppleSignDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleSign/Preview Content\"";
 				DEVELOPMENT_TEAM = K4G755J5BL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleSign/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to your health data to track your steps, distance, and heart rate for fitness tracking.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-PyramidAnchorpoint.AppleSign";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MetaSeedGlobal.FitSpys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -304,21 +338,30 @@
 				DEVELOPMENT_TEAM = K4G755J5BL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppleSign/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to your health data to track your steps, distance, and heart rate for fitness tracking.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-PyramidAnchorpoint.AppleSign";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.MyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
