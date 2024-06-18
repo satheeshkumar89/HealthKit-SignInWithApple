@@ -28,6 +28,7 @@
 		1840CBC52C107CE5007645E4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1840CBC72C10EDED007645E4 /* HealthStoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreDataView.swift; sourceTree = "<group>"; };
 		18769E302C121B5E00BBF18B /* AppleSignRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleSignRelease.entitlements; sourceTree = "<group>"; };
+		18A4F95E2C21B22C00E704C9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 		1840CBAE2C103F5F007645E4 /* AppleSign */ = {
 			isa = PBXGroup;
 			children = (
+				18A4F95E2C21B22C00E704C9 /* README.md */,
 				18769E302C121B5E00BBF18B /* AppleSignRelease.entitlements */,
 				1840CBC42C10557E007645E4 /* AppleSignDebug.entitlements */,
 				1840CBC02C104EAB007645E4 /* Info.plist */,
