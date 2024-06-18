@@ -17,15 +17,15 @@ struct LoginView: View {
     @State private var errorMessage: String?
     
     var body: some View {
-        VStack(){
+        VStack() {
             SignInWithAppleButton(onRequest: configureSignInWithAppleRequest, onCompletion: handleSignInWithAppleCompletion)
                 .frame(width: 280, height: 60)
             
             if let userIdentifier = userId {
-                Text("User ID: \(userId)")
+                Text("User ID: \(userIdentifier)")
             }
             if let fullName = fullname {
-                Text("Full Name: \(fullName)")
+                Text("Full Name: \(fullNameFormatter(fullName))")
             }
             if let email = email {
                 Text("Email: \(email)")
@@ -35,7 +35,7 @@ struct LoginView: View {
                     .foregroundColor(.red)
             }
         }
-        .onAppear{
+        .onAppear {
             loadUserDetails()
         }
     }
@@ -45,7 +45,6 @@ struct LoginView: View {
     }
     
     private func handleSignInWithAppleCompletion(_ result: Result<ASAuthorization, Error>) {
-        print(result)
         switch result {
         case .success(let authorization):
             if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
@@ -55,52 +54,61 @@ struct LoginView: View {
                 saveUserDetails()
             }
         case .failure(let error):
-            // Handle error.
             handleSignInWithAppleError(error)
         }
     }
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    private func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         errorMessage = error.localizedDescription
     }
     
-    //Save Local Data
-    private func saveUserDetails(){
+    private func saveUserDetails() {
         UserDefaults.standard.set(userId, forKey: "UserId")
-        UserDefaults.standard.set(fullname, forKey: "FullName")
+        if let fullname = fullname {
+            UserDefaults.standard.set(PersonNameComponentsFormatter().string(from: fullname), forKey: "FullName")
+        }
         UserDefaults.standard.set(email, forKey: "Email")
     }
     
-    //Get Local Data
-    private func loadUserDetails(){
-        userId = UserDefaults.standard.string(forKey: "UserID")
+    private func loadUserDetails() {
+        userId = UserDefaults.standard.string(forKey: "UserId")
         if let fullNameString = UserDefaults.standard.string(forKey: "FullName") {
             fullname = PersonNameComponentsFormatter().personNameComponents(from: fullNameString)
         }
         email = UserDefaults.standard.string(forKey: "Email")
     }
     
-    
     private func handleSignInWithAppleError(_ error: Error) {
         let nsError = error as NSError
         if nsError.domain == ASAuthorizationError.errorDomain {
             switch nsError.code {
             case ASAuthorizationError.canceled.rawValue:
-                print("Sign in with Apple was canceled.")
+                errorMessage = "Sign in with Apple was canceled."
             case ASAuthorizationError.failed.rawValue:
-                print("Sign in with Apple failed.")
+                errorMessage = "Sign in with Apple failed."
             case ASAuthorizationError.invalidResponse.rawValue:
-                print("Sign in with Apple received an invalid response.")
+                errorMessage = "Sign in with Apple received an invalid response."
             case ASAuthorizationError.notHandled.rawValue:
-                print("Sign in with Apple not handled.")
+                errorMessage = "Sign in with Apple not handled."
             case ASAuthorizationError.unknown.rawValue:
-                print("Sign in with Apple unknown error occurred.")
+                errorMessage = "An unknown error occurred with Sign in with Apple."
             default:
-                print("Sign in with Apple failed: \(error.localizedDescription)")
+                errorMessage = "Sign in with Apple failed: \(error.localizedDescription)"
             }
         } else {
-            print("Sign in with Apple failed: \(error.localizedDescription)")
+            errorMessage = "Sign in with Apple failed: \(error.localizedDescription)"
         }
+    }
+    
+    private func fullNameFormatter(_ fullName: PersonNameComponents) -> String {
+        var nameString = ""
+        if let givenName = fullName.givenName {
+            nameString += givenName
+        }
+        if let familyName = fullName.familyName {
+            nameString += " \(familyName)"
+        }
+        return nameString
     }
 }
 
